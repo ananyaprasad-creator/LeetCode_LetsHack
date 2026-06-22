@@ -1,0 +1,14 @@
+class Solution(object):
+    def finalValueAfterOperations(self, operations):
+        X=0
+        for op in operations:
+            if op[1]=='+':
+                X+=1
+            else:
+                X-=1
+        return X
+        """
+        :type operations: List[str]
+        :rtype: int
+        """
+        
