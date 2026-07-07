@@ -1,0 +1,23 @@
+class Solution(object):
+    def maximumLengthSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        char_count = {}
+        left = 0
+        max_length = 0
+        
+        for right in range(len(s)):
+            # Add the current character to our window count
+            char_count[s[right]] = char_count.get(s[right], 0) + 1
+            
+            # If any character exceeds 2 occurrences, shrink the window from the left
+            while char_count[s[right]] > 2:
+                char_count[s[left]] -= 1
+                left += 1
+                
+            # Calculate the maximum length found so far
+            max_length = max(max_length, right - left + 1)
+            
+        return max_length
