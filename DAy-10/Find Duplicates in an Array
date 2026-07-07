@@ -1,0 +1,21 @@
+class Solution(object):
+    def findDuplicates(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        duplicates = []
+        
+        for num in nums:
+            # Get the index corresponding to the current number's value
+            index = abs(num) - 1
+            
+            # If the number at that index is already negative, 
+            # it means we've encountered this value before.
+            if nums[index] < 0:
+                duplicates.append(abs(num))
+            else:
+                # Mark the value as visited by making the number at index negative
+                nums[index] = -nums[index]
+                
+        return duplicates
